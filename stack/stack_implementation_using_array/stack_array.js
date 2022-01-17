@@ -2,7 +2,7 @@
 // Creation Date: 17/01/2022
 // Language Used: JavaScript
 // Description  : Data Structure -- Stack 
-//                Implement using array
+//                Implemented using array
 
 class Stack {
     constructor() {

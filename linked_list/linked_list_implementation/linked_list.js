@@ -1,3 +1,7 @@
+// Creation Date: 13/01/2022
+// Language Used: JavaScript
+// Description  : Data Structure -- Linked List
+
 class Node{
     constructor(data, next = null){
         this.data = data,

@@ -23,7 +23,7 @@ class DoublyLinkedList{
 
     getElement(index){
 
-        if(index < 1 || index >= this.length){
+        if(index < 0 || index >= this.length){
 
             return -1;
 
@@ -124,9 +124,11 @@ class DoublyLinkedList{
     insertAtPosition(data, position){
 
         // If any of the value is not provided
-        if(data === undefined || position === undefined) return `Please enter a value`;
+        if(data === undefined || position === undefined) return `Please enter data and position 
+        \nYour response Data: ${data}  Position: ${position}`;
 
-        if(position < 0 || position > this.length) return `Index out of bound`;
+        if(position < 0 || position >= this.length) return `Index out of bound, Allowed max siz:
+        ${this.length-1}\nYour response Data: ${data}  Position: ${position}`
 
         // If position is zero that means, insert at front, call inserAtFront function.
         if(position === 0) return this.insertAtFront(data);
@@ -197,7 +199,7 @@ class DoublyLinkedList{
     }
 
     // Remove node from the front
-    removeFromfront(){
+    removeFromFront(){
 
         // to return the removed element we save it in a variable
         let currentHead = this.head;
@@ -231,21 +233,21 @@ class DoublyLinkedList{
         // decrement the length by one as one element is removed from the list
         this.length--;
 
-        return currentTail.data;
+        return currentHead.data;
     }
 
-    removeFromPosition(data, position){
+    removeFromPosition(position){
 
         // If any of the value is not provided
-        if(data === undefined || position === undefined) return `Please enter a value`;
+        if( position === undefined) return `Please enter a value`;
 
         if(position < 0 || position > this.length) return `Index out of bound`;
 
         // If position is zero that means, insert at front, call removeFromFront function.
-        if(position === 0) return this.removeFromFront(data);
+        if(position === 0) return this.removeFromFront();
 
         // If position is length-1 that means, insert at end, call removeFromEnd function.
-        if(position === this.length - 1) return this.removeFromEnd(data);
+        if(position === this.length - 1) return this.removeFromEnd();
 
         // Get the element at the specified position.
         let nodeToRemove = this.getElement(position);
@@ -296,6 +298,7 @@ class DoublyLinkedList{
 }
 
 let doublyLL = new DoublyLinkedList();
+console.log(`Is list empty? ${doublyLL.isEmpty()}`);
 
 doublyLL.insertAtEnd(10);
 doublyLL.insertAtEnd(20);
@@ -310,6 +313,11 @@ doublyLL.insertAtFront(-20);
 doublyLL.insertAtFront(-30);
 doublyLL.insertAtFront(-40);
 doublyLL.insertAtFront(-50);
+doublyLL.insertAtPosition(100, 0);
+doublyLL.insertAtPosition(200, 1);
+doublyLL.insertAtPosition(300, 13);
+doublyLL.insertAtPosition(300, 12);
+
 
 console.log(`--------------------------------------------------`);
 console.log(`Elements are: ${doublyLL.printElements()}`);
@@ -319,4 +327,33 @@ console.log(`Element at index 7 :- ${doublyLL.getValueAtPosition(7)}`);
 console.log(`Element at index 0 :- ${doublyLL.getValueAtPosition(0)}`);
 console.log(`Element at index 10 :- ${doublyLL.getValueAtPosition(10)}`);
 console.log(`Element at index 13 :- ${doublyLL.getValueAtPosition(13)}`);
+
+
+console.log(`--------------------------------------------------`);
 console.log(`Elements are: ${doublyLL.printElements()}`);
+console.log(`Length of the list is ${doublyLL.getLength()}`);
+
+
+console.log(`--------------------------------------------------`);
+console.log(`Element removed from end: ${doublyLL.removeFromEnd()}`);
+console.log(`Element removed from end: ${doublyLL.removeFromEnd()}`);
+console.log(`Element removed from end: ${doublyLL.removeFromEnd()}`);
+console.log(`Element removed from front: ${doublyLL.removeFromFront()}`);
+console.log(`Element removed from front: ${doublyLL.removeFromFront()}`);
+console.log(`Element removed from front: ${doublyLL.removeFromFront()}`);
+console.log(`Elements are: ${doublyLL.printElements()}`);
+console.log(`Length of the list is ${doublyLL.getLength()}`);
+
+
+console.log(`--------------------------------------------------`);
+console.log(`Elements are: ${doublyLL.printElements()}`);
+console.log(`Element removed from position 1:  ${doublyLL.removeFromPosition(1)}`);
+console.log(`Elements are: ${doublyLL.printElements()}`);
+console.log(`Element removed from position 2: ${doublyLL.removeFromPosition(2)}`);
+console.log(`Elements are: ${doublyLL.printElements()}`);
+console.log(`Element removed from position 5: ${doublyLL.removeFromPosition(5)}`);
+console.log(`Elements are: ${doublyLL.printElements()}`);
+console.log(`Length of the list is ${doublyLL.getLength()}`);
+console.log(`--------------------------------------------------`);
+
+console.log(`Is list empty? ${doublyLL.isEmpty()}`);

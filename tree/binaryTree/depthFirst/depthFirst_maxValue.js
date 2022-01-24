@@ -2,7 +2,7 @@
 // Creation Date: 24/01/2022
 // Language Used: JavaScript
 // Description  : Data Structure -- Binary Tree -- Depth First 
-// Usage        : Find the minimum value in the tree.  
+// Usage        : Find the maximum value in the tree.  
 
 class Node{
     constructor(value){
@@ -14,25 +14,25 @@ class Node{
 
 const depthFirstMin = (root) =>{
 
-    let minVal =  Infinity;
-    if (!root) return minVal;
+    let maxVal =  -Infinity;
+    if (!root) return maxVal;
     let stack = [root];
 
     while(stack.length > 0) {
         const current = stack.pop();
-        if(minVal > current.value) minVal = current.value;
+        if(maxVal < current.value) maxVal = current.value;
         if(current.left) stack.push(current.left);
         if(current.right) stack.push(current.right);
     }
 
-    return minVal;
+    return maxVal;
 };
 
 let node1 = new Node(10);
-let node2 = new Node(130);
+let node2 = new Node(1030);
 let node3 = new Node(5);
 let node4 = new Node(16);
-let node5 = new Node(21);
+let node5 = new Node(201);
 let node6 = new Node(7);
 
 node1.left = node2;

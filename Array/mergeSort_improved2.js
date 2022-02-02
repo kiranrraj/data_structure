@@ -7,8 +7,8 @@ function mergeSort(arr1, arr2){
     let item1 = arr1[i], item2 = arr2[j];
     
 
-    while(item1 !== undefined && item2 !== undefined){
-        if(item1 < item2){
+    while(item1 !== undefined || item2 !== undefined){
+        if(!item2 || item1 < item2){
             mergedArray.push(item1)
             i++;
             item1 = arr1[i];
@@ -20,17 +20,8 @@ function mergeSort(arr1, arr2){
         }
     }
 
-    function addRemainingArray(arr, length, merge){
-        if(length !==0){
-            for(let i=length; i< arr.length; i++){
-                merge.push(arr[i]);
-            }
-        }
-    }
-    addRemainingArray(arr1, i, mergedArray);
-    addRemainingArray(arr2, j, mergedArray);
-
     return mergedArray;
 }
 
 console.log(mergeSort([0, 3, 4, 31], [4, 6, 30, 40, 50, 52]));
+console.log(mergeSort([0, 3, 4, 31, 66, 70], [4, 6, 30, 40, 50, 52]));
